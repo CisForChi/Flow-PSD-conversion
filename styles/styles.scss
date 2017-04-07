@@ -1,0 +1,256 @@
+@import 'partials/_setup.scss';
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+}
+li{
+			list-style:none!important;
+		}
+
+a {
+	text-decoration:none;
+	color:#2A2B2C;
+
+}
+.stickyNav {
+
+	ul{
+		background-color:#2A2B2C;
+		margin:0;
+		width:100%;
+		display:flex;
+		justify-content:space-between;
+	}
+	
+	
+	li {
+		
+		
+		color:#757677;
+		font-size:.8em;
+		padding:.5em;
+	}
+
+
+}
+
+.header-img {
+	text-align:center;
+	padding:1em;
+
+}
+
+nav {
+	ul{
+		display:inline-flex;
+ 		align-items:space-between;
+ 		width:100%;
+ 		border-top:1px solid darken(#F9FAFB, 10%);
+
+ 		li {
+ 			margin:1.5em;
+ 		}
+	}
+
+
+}
+
+header{
+	background:url('/assets/plant_hero.jpeg');
+	opacity:.85;
+	background-size:cover;
+	height:100vh;
+	text-align:center;
+	margin:0 auto;
+	}
+	.headerBox {
+		color:white;
+		text-transform:uppercase;
+		font-size:.8em;
+		padding:1em;
+		letter-spacing:.5em;
+			img {
+		margin-top:6em;
+	height:250px;
+}
+	button{
+		background:#2A2B2C;
+	color:#E0E1E2;
+	margin:.5em;
+	border:none;
+	padding:.9em;
+	min-width:100px;
+
+	
+	}
+	button:last-child{
+		background:#D8DC61;
+		color:#2A2B2C;
+	}
+	}
+
+.plantDivide {
+	background:url('/assets/plants_wide.jpeg');
+	background-size:cover;
+}
+
+footer {
+
+	background:url('/assets/footer_bg.jpg');
+	background-size:cover;
+
+}
+
+.aboutHeader {
+	background:('assets/plants_wide.jpeg');
+	background-size:cover;
+}
+
+.aboutHero {
+	background:('/assets/girl_tree.jpeg');
+	background-size:cover;
+}
+
+.testimonial {
+	background:('/assets/flower_pots.jpeg');
+	background-size:cover;
+}
+
+.container {
+	text-align:center;
+	width:95%;
+	padding:1.2em;
+	margin:0 auto;
+	text-align:center;
+}
+.welcome {
+	p {
+		color:#939495;
+		
+
+	}
+}
+.gallery {
+	display:flex;
+	li {
+		color:#1A1D20;
+	}
+}
+
+.featuredItems {
+
+	h1 {
+		text-align:center;
+	}
+	background:#F0F1F2;
+
+	ul {
+	margin:0 auto;
+		display:flex;
+		flex-direction:row;
+		justify-content:center;
+
+		li {
+
+			
+margin:1em;
+		}
+		li:hover {
+			color:#B5C9A3;
+		}
+	}
+}
+
+.plantWrapper {
+
+	 display: grid;
+	 
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: .05em;
+  grid-auto-rows: minmax(125px, auto);
+}
+.one, .two, .three, .four, .five
+{
+	max-height:200px;
+	max-width:200px;
+	background-size:contain;
+}
+.one {
+	background:url('/assets/Homepage-01_plant_07.jpg');
+	
+  grid-column: 1 / 2;
+  grid-row: 1;
+}
+.two { 
+	background:url('/assets/Homepage-01_plant_09.jpg');
+  grid-column: 2 / 2;
+  grid-row: 1 / 3;
+}
+.three {
+	background:url('/assets/half_plant.jpg');
+  grid-row: 2 / 2;
+  grid-column: 1;
+}
+.four {
+	background:url('/assets/Homepage-01_plant_15.jpg');
+  grid-column: 2;
+  grid-row: 2;
+}
+.five {
+	border:5px solid white;
+	max-height:400px;
+	max-width:293.5px;
+ img {
+ 	max-width:400px;
+ 	transform:translateX(25%);
+ }
+	
+}
+
+.arrivals {
+margin:0 auto;
+padding:1em;
+
+}
+	.container {
+width:80%;
+
+		
+
+	}
+
+	.plant {
+		display:inline-grid;
+		margin:.5em;
+		  grid-row-start: 3;
+  grid-row-end: 4;
+  img {
+  	max-height:250px;
+  }
+
+
+		}
+		.plant1 {
+			img {
+				height:390px;
+				width:410px;
+			}
+		}
+	.plant1,.plant2,.plant3{
+	// width:25%;
+	// display:inline-flex;
+	justify-content:flex-start;
+		
+	}
+
+		
+
