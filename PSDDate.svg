@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="163px" height="113px" viewBox="0 0 163 113">
+<style type="text/css"><![CDATA[
+.style0 {
+  font-size: 150px;
+  font-family: "Poppins";
+  fill: rgb(236,236,236);
+  text-transform: uppercase;
+}
+.style1 {
+  font-size: 30px;
+  font-family: "Poppins";
+  fill: rgb(128,160,93);
+  text-transform: uppercase;
+}
+]]></style>
+<g><text transform="translate(-5.23,111.94)" class="style0"><tspan x="0.00 76.95" fill="rgb(235,235,235)">23</tspan></text><text transform="matrix(0.69,0.00,0.00,0.69,38.48,61.11)" class="style1"><tspan x="0.00 23.82 42.18 58.41 75.81" fill="rgb(127,159,93)">march</tspan></text></g></svg>

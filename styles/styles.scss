@@ -1,88 +1,175 @@
 @import 'partials/_setup.scss';
+@import '_media-queries.scss';
+$res-collection: (320, 480, 768, 1024, 1280, 1680);
+$orientation-collection: (all, portrait, landscape);
+$hdpi-collection: (1, 2);
+$hdtv-collection: ('720p', '1080', '2K', '4K');
+$mq-mobile: 768px;
+$mq-tablet: 1024px;
 html, body {
-	width: 100%;
-	height:100%;
+	height: 100%;
 	margin: 0px;
 	padding: 0px;
-	overflow-x: hidden;
-
 }
 body {
 	font-family: 'Poppins', sans-serif;
 	color: #2B2B2B;
-	font-weight: 400;
-	max-width:1920px;
-
+	font-weight: 100;
+	max-width: 100%;
+	overflow-x: hidden!important;
+	@include mq($max-width: 320px) {
+		overflow-x: hidden!important;
+	}
+	@include mq($min-width: 320px, $max-width: 480px) {
+		overflow-x: none;
+	}
 }
-.container{
-	width:1263px!important;
-	margin:0 auto!important;
-	padding:3em!important;
+.container {
+	max-width: 61%!important;
+	margin: 0 auto!important;
+	@include mq($max-width: 320px) {
+		width: 100%!important;
+		padding: 0!important;
+	}
+	@include mq($min-width: 768px, $max-width: 1024px) {
+		max-width: 85%!important;
+	}
 }
-
+h2 {
+	font-size: 1.6em!important;
+	margin: 0 auto;
+	text-align: center!important;
+	font-weight: 100!important;
+	text-transform: uppercase!important;
+	padding: 0;
+}
+h3 {
+	font-size: 1.25em!important;
+	font-weight: 100!important;
+}
 li {
 	list-style: none!important;
 }
 a {
 	text-decoration: none;
-	color: #2A2B2C;
+	color: #8f8f8f;
 }
 a:hover {
-	color:#819F60;
-	text-decoration:underline;
-	text-decoration-color:#819F60;
+	border-bottom: 3px solid #819F60;
 }
-.stickyNav {
-	padding: 0;
-	background-color: #2A2B2C;
-	.wrapper {
-		
+.navHeader {
+	margin: 0 auto;
+	.stickyNav {
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
 		background-color: #2A2B2C;
-		margin: 0;
-		ul {
-			margin: 0;
+		.wrapper {
 			display: inline-flex;
 			flex-direction: row;
-			width: 100%;
-			.left, .right {
-				margin-right: auto;
+			min-width: 71%!important;
+			justify-content: space-between;
+			margin: 0 auto;
+			@include mq($min-width: 1280px, $max-width: 1680px) {
+				width: 85%;
+				font-size: 1.2em;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				width: 100%;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				width: 100%;
+				padding: 0;
+			}
+			ul {
 				display: inline-flex;
 				flex-direction: row;
+				@include mq($max-width: 320px) {
+					margin: 0 auto;
+				}
+				#right {
+					font-size: .7em;
+					margin: 1em;
+					margin-left: auto;
+					@include mq($max-width: 320px) {
+						margin: .2em;
+						font-size: .2em;
+					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						width: 100%;
+						padding: 0;
+						display: flex;
+						flex-direction: column;
+						margin: .4em;
+						font-size: .6em;
+						padding-right: 2em;
+					}
+					width:100%!important;
+				}
+				#left {
+					font-size: .7em;
+					margin: 1em;
+					@include mq($max-width: 320px) {
+						margin: .1em;
+						font-size: .2em;
+					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						width: 100%;
+						padding: 0;
+						display: flex;
+						flex-direction: column;
+						margin: .4em;
+						font-size: .6em;
+						padding-right: 2em;
+					}
+				}
 			}
-			
-			.left {
-				margin-left: auto;
+			.hvr-grow-shadow {
+				display: inline-block;
+				vertical-align: middle;
+				-webkit-transform: perspective(1px) translateZ(0);
+				transform: perspective(1px) translateZ(0);
+				box-shadow: 0 0 1px transparent;
+				-webkit-transition-duration: 0.3s;
+				transition-duration: 0.3s;
+				-webkit-transition-property: box-shadow, transform;
+				transition-property: box-shadow, transform;
 			}
-			#right {
-				margin: 1em;
-			}
-			#left {
-				margin: 1em;
+			.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+				box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1);
 			}
 		}
-		a {
-			color: #8F8F8F;
-			font-size: .3rem;
-			text-transform: uppercase;
+	}
+	.header-img {
+		text-align: center;
+		padding: 1.225em;
+		margin: 0 auto;
+		max-width: 100%;
+		max-height: 100%;
+		@include mq($max-width: 320px) {
+			max-width: 50%;
+			height: 50%;
 		}
-		a:hover {
-			text-decoration: underline;
-			font-size: 1rem;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			padding: 2em;
+			max-width: 50%;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			margin: 0 auto;
+		}
+		@include mq($min-width: 1280px, $max-width: 1680px) {
+			padding: 2em;
 		}
 	}
 }
-.header-img {
-	text-align: center;
-	padding: 1.225em;
-	margin: 0 auto;
-	max-width: 100%;
-	max-height: 100%;
-}
 nav {
-	
 	border-top: 1px solid darken(#F9FAFB, 10%);
 	.wrapper {
-		
 		margin: 0 auto;
 		margin: 0 auto;
 		text-align: center;
@@ -92,10 +179,31 @@ nav {
 		justify-content: flex-end;
 		margin: 0 auto;
 		text-align: center;
+		@include mq($max-width: 320px) {
+			display: flex;
+			flex-flow: wrap row;
+			width: 100%;
+			justify-content: center;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: flex;
+			flex-flow: wrap row;
+			max-width: 89%;
+			justify-content: center;
+		}
 		li {
 			margin: 1em;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				margin: .4em;
+			}
 			a {
 				font-size: .6em;
+				@include mq($min-width: 1280px, $max-width: 1680px) {
+					font-size: 1em;
+				}
+				@include mq($min-width: 320px, $max-width: 480px) {
+					font-size: .76em;
+				}
 			}
 		}
 	}
@@ -103,51 +211,83 @@ nav {
 header {
 	background: url('/assets/plant_hero.jpeg');
 	opacity: .85;
-	background-size:cover;
-
-	background-position:top center;
-
+	background-size: cover;
+	background-position: top center;
 	text-align: center;
 	margin: 0 auto;
-		img {
-			width:30%;
+	svg {
+		display: none;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: block;
+			width: 15.5%;
+			margin: 0 auto;
+			fill: #ffff;
 		}
+	}
+	img {
+		width: 30%;
+		@include mq($max-width: 320px) {
+			width: 50%;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			width: 85%;
+			padding: 1em;
+		}
+	}
 	h1 {
-		
-		font-size: 1.375rem;/* Approximation due to font substitution */
+		font-size: 1.375rem;
+		/* Approximation due to font substitution */
 		font-weight: 400;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			color: #ffff;
+			padding: .5em;
+			font-weight: 800;
+			font-size: 1.8em;
+		}
 	}
 }
 .headerBox {
 	color: lighten(white, 55%);
 	text-transform: uppercase;
 	font-size: .8em;
-	margin:0 auto;
-	padding-top:6.5em;
-	padding-bottom:3em;
+	margin: 0 auto;
+	padding-top: 6.5em;
+	padding-bottom: 3em;
 	letter-spacing: .2em;
-
 	button {
 		background: #2A2B2C;
 		color: #E0E1E2;
 		margin: .5em;
-		margin-top:2em;
-		text-transform:uppercase;
+		margin-top: 2em;
+		text-transform: uppercase;
 		border: none;
 		padding: .5em;
-		width:14%;
+		width: 14%;
 		font-size: 0.813rem;
-
+		@include mq($max-width: 320px) {
+			margin: 0;
+			width: 100%;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			width: 95%;
+			margin: 0;
+		}
 	}
 	button:last-child {
 		background: #D8DC61;
 		color: #2A2B2C;
-		text-transform:uppercase;
-		max-width:182px;
-		width:10%;
+		text-transform: uppercase;
+		max-width: 182px;
+		width: 10%;
 		font-size: 0.813rem;
+		@include mq($max-width: 320px) {
+			width: 100%;
+			margin: 0;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: none;
+		}
 	}
-
 }
 .plantDivide {
 	background: url('/assets/plants_wide.jpeg');
@@ -155,14 +295,10 @@ header {
 }
 footer {
 	background: url('/assets/footer_bg.jpg');
-	background-size: contain;
+	background-size: cover;
 }
 .aboutHeader {
 	background: ('assets/plants_wide.jpeg');
-	background-size: cover;
-}
-.aboutHero {
-	background: ('/assets/girl_tree.jpeg');
 	background-size: cover;
 }
 .testimonial {
@@ -170,439 +306,742 @@ footer {
 	background-size: cover;
 }
 .welcome {
-
-	padding:0;
-	margin:0;
-	
-	text-transform:uppercase;
-
+	padding: 3em 2em;
+	text-transform: uppercase;
+	@include mq($max-width: 320px) {
+		padding: 1em;
+	}
+	@include mq($min-width: 320px, $max-width: 480px) {
+		padding: 2em;
+	}
+	@include mq($min-width: 1280px, $max-width: 1680px) {}
 	.container {
-		max-width:1263px;
-		
+		width: 61%!important;
 		text-align: center;
-		
-
+		justify-content: center;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			min-width: 100%!important;
+			padding: 1em;
+		}
 		h2 {
-			color:  #2b2b2b;
+			color: #2b2b2b;
 			font-size: 1.875rem;
 			font-weight: 400;
-			line-height:2;
-			margin:0 auto;
+			line-height: 2;
+			margin: 0 auto;
 		}
-			p {
-				color:  #949494;
-				font-size: 0.738rem;/* Approximation due to font substitution */
-				font-weight: 400;
-				line-height: 1.6;/* Approximation due to font substitution */
-				text-align: center;
-				max-width:74.2%;
-				text-transform:none;
-				margin:0 auto;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			font-size: .8rem;
+		}
+		p {
+			color: #949494;
+			font-size: 0.738rem;
+			/* Approximation due to font substitution */
+			font-weight: 400;
+			line-height: 1.6;
+			/* Approximation due to font substitution */
+			text-align: center;
+			text-transform: none;
+			margin: 0 auto;
+			@include mq($max-width: 320px) {
+				text-align: left;
 			}
-
-
-	.gallery {
-		
-	padding-top:7em;
-	padding-bottom:7em;
-
-margin:0 auto;
-		display:inline-flex;
-
-	
-		
+			@include mq($min-width: 1280px, $max-width: 1680px) {
+				max-width: 80%;
+				font-size: 1em;
+			}
+		}
+		.gallery {
+			padding: 1em;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			@include mq($max-width: 320px) {
+				flex-direction: column;
+				padding: 0;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				flex-direction: column;
+			}
 			.box1 {
-	 margin:.2em;
-	 max-height:180px;
-	 max-width:374px;
-		padding:.2em;
-	
-
-		
-	
-
-				
-	
-					a {
-						font-family: Poppins;
-						color:  #2b2b2b;
-						font-size: 1.125rem;/* Approximation due to font substitution */
-						font-weight: 400;
+				padding: .2em;
+				@include mq($min-width: 1280px, $max-width: 1680px) {
+					padding: 3em;
+				}
+				img {
+					max-width: 262px;
+				}
+				a {
+					font-family: Poppins;
+					color: #2b2b2b;
+					font-size: .925rem;
+					/* Approximation due to font substitution */
+					font-weight: 400;
+					@include mq($min-width: 1280px, $max-width: 1680px) {
+						font-size: 1em;
 					}
-
-					a:hover{
-						color:  #80a05d;
+					@include mq($min-width: 320px, $max-width: 480px) {
+						font-size: .8rem;
 					}
 				}
-					img {
-						max-width: 373px;
-						max-height: 195px;
-					}
 			}
-		}	
+			img {
+				max-width: 373px;
+				max-height: 195px;
+			}
+		}
+	}
 }
-
-
-
-
 .featuredItems {
-	padding-top:5em;
-	padding-bottom:4em;
-	text-align:center;
-	background-color:  #f1f1f1;
-	.wrapper{
-		width:1174px;
-		margin:0 auto;
-		text-align:center;
-	
+	padding-top: 3em;
+	padding-bottom: 4em;
+	text-align: center;
+	margin: 0 auto;
+	background-color: #f1f1f1;
+	@include mq($max-width: 320px) {
+		padding: 0;
+	}
+	@include mq($min-width: 320px, $max-width: 480px) {
+		padding: .5em;
+	}
+	.featuredWrap {
+		margin: 0 auto;
+		text-align: center;
+	}
 	h1 {
-		text-transform:uppercase;
-		color:  #2b2b2b;
-		font-size: 1.875rem;/* Approximation due to font substitution */
+		text-transform: uppercase;
+		color: #2b2b2b;
+		font-size: 1.875rem;
+		/* Approximation due to font substitution */
 		font-weight: 400;
-		line-height:0;
-		margin:0 auto;
+		line-height: 0;
+		margin: 0 auto;
 	}
-
-	
-
-
 	ul {
-		display:inline-flex;
-		text-align:center;
-		justify-content:center;
+		display: inline-flex;
+		text-align: center;
+		padding: .5em;
+		justify-content: center;
+		@include mq($max-width: 320px) {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			margin: 0;
+			padding: 0;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: inline-flex;
+			flex-direction: column;
+			max-width: 100%!important;
+			margin: 0;
+			padding: 0;
+		}
 	}
-	 li {
-	 	margin:1em;
-	 	font-family: Poppins;
-		color:  #b1b1b1;
-		font-size: 1rem;/* Approximation due to font substitution */
+	li {
+		margin: 3em;
+		font-family: Poppins;
+		color: #b1b1b1;
+		font-size: 0.738rem;
+		/* Approximation due to font substitution */
 		font-weight: 500;
 		text-align: left;
+		text-transform: uppercase;
+		@include mq($max-width: 320px) {
+			margin: .225em;
+			text-align: center;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			margin: .45em;
+			text-align: center;
+		}
 	}
 	li:hover {
-		color:  #80a05d;
-			
+		color: #80a05d;
 	}
-	
-	figure.products{
-		position:relative;
-		display:inline-flex;
-		// justify-content:center;
-		
-	
-// 	span {
-
-// 		border-radius: 50%;
-// background-color:  #d9de55;
-
-// margin-left:12rem;
-
-// font-size:.044em;
-// padding:.535em;
-// 	}
-
-	
-}
-	.plantWrapper {
-		flex-direction:row;
-		flex-flow:row wrap;
-		display:flex;
-		width:50%;
-height:766px;
-
-	
-		.container {
-			background:white;
-			padding:0;
-			background-color:  #ffffff;
-			max-width: 267px;
-			max-height: 347px;
-#half{
-	 	 	width:229px;
-	 	 	display:inline-flex;
-	 	 }
-		.product {
-
-	 	 	img{
-
-max-width:100%;
-
-margin:0 auto;
-text-align:center;
-padding:0;
-margin:0;
-max-height:237px;
-	 	 }
-	 	 
-	 	
-	 	
-}
-
-	
-
-			
-			
-		
-
-
-		
-	}
-
-
-
-.product-description{
-	
-
-	h4 {
-		color:  #3d3d3d;
-font-size: .7rem;/* Approximation due to font substitution */
-font-weight: 400;
-line-height: 1.125;/* Approximation due to font substitution */
-text-align: center;
-	}
-	p {
-		color:  #c0c0c0;
-font-size: 0.775rem;/* Approximation due to font substitution */
-font-weight: 600;
-line-height: 1.286;/* Approximation due to font substitution */
-text-align: center;
-	}
-	.add, .add-two {
-	
-		display:flex;
-	
-		text-align:center;
-		
-		
-	
-	
-		
-
-
-	
-	button {
-			text-transform:uppercase;
-			width:272px;
-			border:none;
-			background:#f1f1f1;
-			font-size:.6em;
-		
-			margin:-1em;
+	figure.products {
+		display: flex;
+		flex-direction: row;
+		flex-flow: wrap row;
+		justify-content: center;
+		@include mq($max-width: 320px) {
+			flex-direction: column;
 		}
-button:hover{
-		background-color:  #80a05d;
-		color:white;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			flex-direction: column;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {}
+		.plantWrapper {
+			display: flex;
+			flex-flow: wrap row;
+			flex-direction: row;
+			max-width: 61%;
+			@include mq($max-width: 320px) {
+				padding: 0;
+				text-align: center;
+				width: 100%;
+				flex-direction: column;
+				justify-content: center;
+				margin: 0 auto;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				padding: 0;
+				flex-direction: column;
+				justify-content: center;
+				margin: 0 auto;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				max-width: 100%!important;
+				justify-content: center;
+			}
+			.containerPlant {
+				min-width: 35%;
+				// width:34.5%;
+				// display:flex;
+				// align-items:center;
+				// flex-flow:wrap row;
+				padding-left: 1.225em;
+				margin: -.325em;
+				@include mq($max-width: 320px) {
+					text-align: center;
+					margin: 0;
+					padding: 0;
+					max-width: 100%;
+				}
+				@include mq($min-width: 320px, $max-width: 480px) {
+					text-align: center;
+					margin: 0;
+					padding: 0;
+					max-width: 100%;
+				}
+				@include mq($min-width: 768px, $max-width: 1024px) {
+					margin: 0;
+					text-align: center;
+				}
+				.product1 {
+					background: url('/assets/Homepage-01_plant_07.jpg');
+					min-height: 347px;
+					width: 95%;
+					margin-left: -1.5em;
+					display: flex;
+					flex-direction: column;
+					background-size: contain;
+					background-repeat: no-repeat;
+					position: relative;
+					@include mq($max-width: 320px) {
+						height: 100%;
+						max-width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						height: 100%;
+						max-width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+					.new {
+						border-radius: 50%;
+						background-color: #ffd19e;
+						width: 41px;
+						height: 41px;
+						position: absolute;
+						top: 0;
+						right: 0;
+						h5 {
+							color: #3b3b3b;
+							font-size: 0.25rem;
+							/* Approximation due to font substitution */
+							font-weight: 600;
+							line-height: 3;
+							/* Approximation due to font substitution */
+							padding-top: .8em;
+							margin: 0 auto;
+							@include mq($min-width: 320px, $max-width: 480px) {
+								font-size: .5rem;
+							}
+						}
+					}
+				}
+				.product2 {
+					background: url("/assets/Homepage-01_plant_09.jpg");
+					min-height: 347px;
+					max-width: 95%;
+					margin-left: -2.5em;
+					display: flex;
+					flex-direction: column;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-repeat: no-repeat;
+					@include mq($max-width: 320px) {
+						height: 100%;
+						max-width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						height: 100%;
+						max-width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+				}
+				.product3 {
+					background: url("/assets/half_plant.jpg");
+					margin-left: -1.5em;
+					height: 347px;
+					margin-top: 2em;
+					width: 95%;
+					display: flex;
+					flex-direction: column;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-repeat: no-repeat;
+					position: relative;
+					.product-description {
+						.new {
+							border-radius: 50%;
+							background-color: #d9de55;
+							width: 41px;
+							height: 41px;
+							position: absolute;
+							top: 0;
+							right: 0;
+							h5 {
+								color: #3b3b3b;
+								font-size: 0.25rem;
+								/* Approximation due to font substitution */
+								font-weight: 600;
+								line-height: 3;
+								/* Approximation due to font substitution */
+								padding-top: 1em;
+								margin: 0 auto;
+								@include mq($min-width: 320px, $max-width: 480px) {
+									font-size: .5rem;
+								}
+							}
+						}
+					}
+					@include mq($max-width:320px) {
+						max-height: 100%;
+						width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						max-height: 100%;
+						width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+				}
+				.product4 {
+					background: url("/assets/Homepage-01_plant_15.jpg");
+					height: 347px;
+					margin-top: 2em;
+					margin-left: -2.5em;
+					background-size: cover;
+					display: flex;
+					flex-direction: column;
+					max-width: 95%;
+					display: flex;
+					flex-direction: column;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-repeat: no-repeat;
+					@include mq($max-width: 320px) {
+						max-height: 100%;
+						max-width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						max-height: 100%;
+						max-width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+				}
+			}
+			.product-description {
+				margin-top: auto;
+				padding: 1.6em;
+				font-size: 0.738rem;
+				background: white;
+				width: auto;
+				h4 {
+					color: #3d3d3d;
+					font-size: 1.0em;
+					font-weight: 400;
+					line-height: 1.025;
+					text-align: center;
+				}
+				p {
+					color: #c0c0c0;
+					font-size: 0.875rem;
+					font-weight: 600;
+					line-height: 1.286;
+					text-align: center;
+				}
+			}
+		}
 	}
 }
-	
-
-			 }
-			
-	 	 
-	 	
-}
+.add {
+	display: flex;
+	text-align: center;
+	button {
+		text-transform: uppercase;
+		min-width: 100%;
+		border: none;
+		background: #f1f1f1;
+		font-size: .6em;
+		padding: 1em;
 	}
-}
-
-.add-two{
-	padding-top:9.8em;
-
+	button:hover {
+		background-color: #80a05d;
+		color: white;
+	}
 }
 .bestWishes {
-	
-
-	max-width:562px;
-	max-height:816px;
-	border:6px solid white;
-	text-align:left;
-	padding:3em;
-
- .bestText {
- 
- 
-
- 	h3 {
- 	text-transform:uppercase;
-	color:  #313131;
-	font-size: 2.25rem;/* Approximation due to font substitution */
-	font-weight: 400;
-	line-height: 1.167;/* Approximation due to font substitution */
+	overflow-x: hidden;
+	max-width: 30%;
+	margin: -.225em;
+	height: 716px;
+	border: 4px solid white;
 	text-align: left;
- 	}
-
- 	strong {
-		font-family: Poppins;
-		color:  #80a05d;
-		font-size: 2.25rem;/* Approximation due to font substitution */
-		font-weight: 600;
-		line-height: 1.167;/* Approximation due to font substitution */
-		text-align: left
- 	}
- 	p{
- 		font-family: Poppins;
-		color: #949494;
-		font-size: 0.938rem; /* Approximation due to font substitution */
-		font-weight: 400;
-		line-height: 1.6; /* Approximation due to font substitution */
-		text-align: left;
-
- 	}
- 	a{
- 		font-family: Poppins;
- 		position:relative;
-		color:  #3b3b3b;
-		font-size: 0.875rem;/* Approximation due to font substitution */
-		font-weight: 600;
-		line-height: 2.571;/* Approximation due to font substitution */
-		text-align: left;
- 	}
- 	a:before {
- 		content:"―";
-
- 	
- 		padding:1em;
-
-
- 		 
-
-   
-
- 	}
-
- }
-	.bestImage{
-			
-
-			
-		img {
-			
-			
-			width: 605px;
-
-			height: 371px;
-			margin-bottom:2em;
-			position:absolute;
-			bottom:0;
-			transform:translateX(37.0%);
-
-			z-index:1;
-				
-			
-
-
-	
-			}		
-		}
+	padding: 3em;
+	position: absolute;
+	right: 13%;
+	@include mq($max-width: 320px) {
+		position: relative;
+		max-width: 60%;
+		height: 50%;
+		text-align: center;
+		margin: 0 auto;
+		padding: 1.2em;
+		margin-bottom: 1em;
+		margin-right: 1.5em;
 	}
-
-
-
-
-
-
-.arrivals {
-	
-		
-	
-
+	@include mq($min-width: 320px, $max-width: 480px) {
+		position: relative;
+		max-width: 60%;
+		max-height: 400px;
+		text-align: center;
+		margin: 0 auto;
+		padding: 1.2em;
+		margin-bottom: 1em;
+		margin-right: 1.5em;
+		background: url('/assets/cactusplants.jpg');
+		background-size: 75% auto;
+		background-position-y: 100%;
+		background-position-x: 100%;
+		background-repeat: no-repeat;
+	}
+	@include mq($min-width: 768px, $max-width: 1024px) {
+		position: relative;
+		max-width: 500px;
+		padding: 1em;
+		height: 25%;
+		margin-left: 25%;
+		margin-top: 1em;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+	}
+	.bestText {
 		h3 {
-			font-size:2em;
 			text-transform: uppercase;
-			letter-spacing: .175em;
-			font-color: #2B2B2B;
-			text-align:center;
+			color: #313131;
+			font-size: 2.25rem;
+			/* Approximation due to font substitution */
+			font-weight: 400;
+			line-height: 1.167;
+			text-align: left;
+			@include mq($max-width: 320px) {
+				font-size: 1rem!important;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				font-size: 1rem!important;
+			}
 		}
-
-		.wrapper2{
-			margin:1em;
-			display:flex;
-			flex-flow:row wrap;
-			justify-content:stretch;
-			justify-content:space-around;
+		strong {
+			color: #80a05d;
+			font-size: 2.25rem;
+			font-weight: 600;
+			line-height: 1.167;
+			text-align: left;
+			@include mq($max-width: 320px) {
+				font-size: 1rem!important;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				font-size: 1rem!important;
+			}
 		}
-	}
-
-.plant {
-
-
-	
-	img {
-		max-width: 270px;
-		max-height: 347px;
+		p {
+			color: #949494;
+			font-size: 0.838rem;
+			font-weight: 400;
+			padding-right: 1em;
+			line-height: 1.6;
+			text-align: left;
+			@include mq($max-width: 320px) {
+				font-size: .4rem;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				font-size: .7rem;
+			}
+		}
+		a {
+			position: relative;
+			color: #3b3b3b;
+			font-size: 0.875rem;
+			font-weight: 600;
+			line-height: 2.571;
+			text-align: left;
+		}
+		a:before {
+			content: "―";
+			padding: 1em;
+		}
 	}
 }
-.plant1 {
+.bestImage {
+	position: relative;
+	z-index: 1;
+	@include mq($max-width: 320px) {
+		display: none;
+	}
 	img {
-		max-width: 570px;
-max-height: 399px;
+		max-width: 470px;
+		height: 271px;
+		z-index: 1;
+		position: absolute;
+		bottom: 10px;
+		transform: translateX(-24%);
+		@include mq($min-width: 1280px, $max-width: 1680px) {
+			transform: translateX(11.5%);
+		}
+		@include mq($max-width: 320px) {
+			display: none;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: none;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			display: none;
+		}
 	}
 }
-.plant1, .plant2, .plant3 {
-
+.arrivals {
+	z-index: 0;
+	.container {
+		width: 61%!important;
+		margin: 0 auto;
+		text-align: center;
+		padding-top: 2em;
+		padding-bottom: 4em;
+		h2 {
+			padding: 2em;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				padding: .5em;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				padding: .8em;
+			}
+		}
+		.wrapper2 {
+			display: flex;
+			flex-flow: wrap row;
+			flex-direction: row;
+			justify-content: space-between;
+			@include mq($max-width: 320px) {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				margin: 0 auto;
+				text-align: center;
+			}
+			@include mq($min-width: 1280px, $max-width: 1680px) {
+				justify-content: space-around;
+				max-width: 80%;
+				margin: 0 auto;
+			}
+			.plant1 {
+				img {
+					width: 455px;
+					height: 342px;
+					@include mq($max-width: 320px) {
+						display: none;
+					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						display: none;
+					}
+					@include mq($min-width: 768px, $max-width: 1024px) {
+						max-width: 100%;
+						max-height: 100%;
+					}
+				}
+			}
+			.plant2, .plant3, .plant4, .plant5, .plant6, .plant7 {
+				img {
+					width: 149px;
+					height: 188px;
+				}
+			}
+		}
+	}
 }
 .plantDivide {
 	padding: 2.5em;
 	width: 100%;
-	max-height:486px;
+	max-height: 486px;
 	margin: 0 auto;
 	text-align: center;
+	@include mq($max-width: 320px) {
+		padding: .5em;
+		width: 100%!important;
+	}
+	@include mq($min-width: 320px, $max-width: 480px) {
+		padding: 2em;
+	}
 	img {
 		max-width: 50%;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			max-width: 100%;
+		}
 	}
 }
 .blog {
-	
+	padding-top: 4em;
+	@include mq($max-width: 320px) {
+		padding: 1em!important;
+	}
+	@include mq($min-width: 320px, $max-width: 480px) {
+		padding: 1em;
+	}
+	@include mq($min-width: 768px, $max-width: 1024px) {
+		padding: 2em;
+	}
 	h3 {
 		font-size: 2em;
 		text-align: center;
 		display: block;
 	}
-
 	margin:0 auto;
 	.container {
 		display: flex;
-		
 		margin: 0 auto;
-		justify-content: center;
+		justify-content: space-around;
+		width: 60%!important;
+		@include mq($max-width: 320px) {
+			display: flex;
+			flex-direction: column;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: flex;
+			flex-direction: column;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 	.box1, .box2 {
-		margin: 2.5em;
-		width:100%;
+		position: relative;
+		margin: 1.2em;
+		z-index: 1;
+		@include mq($max-width: 320px) {
+			padding: 0!important;
+			margin: 0 auto;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			padding: 0;
+			margin: 0 auto;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			padding: 0;
+			margin: 0 auto;
+			text-align: center;
+			padding: 1em;
+		}
+		svg {
+			width: 20%;
+			display: block;
+			position: absolute;
+			left: -25%;
+			z-index: 10;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				width: 32%;
+				left: -30%;
+			}
+		}
 		padding: .25em;
 		position: relative;
 		text-align: left;
 		img {
-			max-width: 570px;
+			max-width: 370px;
 			max-height: 263px;
+			@include mq($max-width: 320px) {
+				padding: 0!important;
+				width: 95%;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				padding: 0;
+				width: 95%;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				max-width: 100%;
+				max-height: 100%;
+			}
 		}
 		h4 {
-			color:  #282828;
-			font-size: 1.25rem;/* Approximation due to font substitution */
+			color: #282828;
+			font-size: 1.05rem;
+			/* Approximation due to font substitution */
 			font-weight: 500;
-			line-height: 1.1;/* Approximation due to font substitution */
+			line-height: 1.1;
+			/* Approximation due to font substitution */
 			text-align: left;
+			@include mq($max-width: 320px) {
+				font-size: .5em;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				font-size: 1.5em;
+				text-align: center;
+			}
 		}
 		.details, .month {
-color:  #80a05d;
-font-size: 0.875rem;/* Approximation due to font substitution */
-font-weight: 400;
-line-height: 1.571;/* Approximation due to font substitution */
-text-align: left;
+			color: #80a05d;
+			font-size: 0.875rem;
+			/* Approximation due to font substitution */
+			font-weight: 400;
+			line-height: 1.571;
+			/* Approximation due to font substitution */
+			text-align: left;
+			@include mq($max-width: 320px) {
+				font-size: .5em;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				font-size: 1em;
+				text-align: center;
+			}
 		}
 		.date, .month {
 			padding: .075em;
-			display:none;
-		}
-		.date {
-			font-size: 7em;
-			position: absolute;
-			top: -4%;
-			z-index: 1;
-			bottom: 0;
-			left: -35%;
-			right: 0;
-			color: #ECECEC;
+			display: none;
 		}
 		.month {
 			text-transform: uppercase;
@@ -614,318 +1053,986 @@ text-align: left;
 		}
 	}
 }
+.logo {
+	background: url('/assets/Logos.jpg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	min-height: 97px;
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	@include mq($max-width: 320px) {
+		display: none;
+	}
+	@include mq($min-width: 320px, $max-width: 480px) {
+		background-size: auto 70%;
+		min-height: 45px;
+	}
+	@include mq($min-width: 768px, $max-width: 1024px) {
+		min-height: 70px;
+		background-size: cover;
+		padding: 2rem;
+	}
+}
+.logo:after {
+	position: absolute;
+	content: '';
+	background-color: rgba(241, 241, 241, .4);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
 footer {
 	color: white;
-	padding: 1em;
-	.wrapper3 {
-		max-width:1000px;
-		padding:2em;
+	padding-top: 1.75em;
+	margin: 0 auto;
+	padding-bottom: 3em;
+	border-bottom: none;
+	.container {
+		padding-top: 1em;
 		display: flex;
-		flex-flow:row;
-		justify-content:center;
-		
-		margin:2em;
-	}
-	.boxA, .boxB, .boxC {
-		max-width:278px;
-		margin:0 auto;
-	}
-	.boxA {
-		text-align: center;
-		li {
+		flex-flow: wrap row;
+		justify-content: space-between;
+		margin: 0 auto!important;
+		text-align: center!important;
+		@include mq($max-width: 320px) {
+			flex-direction: column!important;
+			padding: 2;
+			margin: 0 auto!important;
+			width: 100%!important;
+		}
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: flex;
+			flex-flow: wrap row;
+			flex-wrap: no-wrap;
+			justify-content: center;
+			width: 100%!important;
+			padding: .25em;
+			margin: 0 auto;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			padding: 0;
+		}
+		.boxA, .boxB, .boxC {
+			width: 30.333%;
+			border-bottom: none;
+			@include mq($max-width: 320px) {
+				width: 100%!important;
+				margin: 0 auto!important;
+				text-align: center!important;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				width: 100%!important;
+				display: inline-flex;
+				flex-direction: column;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				width: 20%;
+				margin: 0 auto;
+			}
+		}
+		.boxA {
+			width: 25%;
+			@include mq($max-width: 320px) {
+				width: 100%!important;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				width: 100%!important;
+			}
+			ul {
+				text-align: center;
+				li {
+					@include mq($min-width: 320px, $max-width: 480px) {
+						min-width: 100%!important;
+					}
+					h4 {
+						text-transform: uppercase;
+						letter-spacing: .25em;
+						padding-bottom: .5em;
+						border-bottom: 1px solid #343434;
+						@include mq($max-width: 320px) {
+							font-size: .4em;
+						}
+						@include mq($min-width: 320px, $max-width: 480px) {
+							font-size: 1em!important;
+							border-bottom: none;
+						}
+						@include mq($min-width: 768px, $max-width: 1024px) {
+							font-size: .8em;
+						}
+					}
+					img {
+						@include mq($max-width: 320px) {
+							width: 50%;
+						}
+						@include mq($min-width: 320px, $max-width: 480px) {
+							width: 50%;
+						}
+						@include mq($min-width: 768px, $max-width: 1024px) {
+							width: 70%;
+						}
+					}
+					p {
+						color: #858585;
+						font-size: 0.938rem;
+						font-weight: 400;
+						line-height: 1.6;
+						text-align: center;
+						@include mq($max-width: 320px) {
+							font-size: .4em;
+						}
+						@include mq($min-width: 320px, $max-width: 480px) {
+							font-size: .938rem;
+						}
+						@include mq($min-width: 768px, $max-width: 1024px) {
+							text-align: left;
+							font-size: .7em;
+						}
+					}
+					.fa {
+						margin: .225em;
+						padding: .15em;
+						font-size: .9em;
+						@include mq($max-width: 320px) {
+							font-size: .2em;
+						}
+						@include mq($min-width: 320px, $max-width: 480px) {
+							font-size: 1em;
+						}
+						@include mq($min-width: 768px, $max-width: 1024px) {
+							font-size: .8em;
+							margin: .2em;
+							padding: .2em;
+							border-bottom: 1px solid green;
+						}
+					}
+					.fa:hover {
+						color: #858585;
+					}
+				}
+			}
+		}
+		.boxB {
+			text-align: center;
+			@include mq($max-width: 320px) {
+				width: 100%!important;
+				margin: 0 auto;
+				padding: 0;
+				margin: 0;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				font-size: 1em;
+				max-width: 100%!important;
+				text-align: center;
+				margin: 0 auto;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				font-size: .8em;
+				text-align: left;
+			}
 			h4 {
 				text-transform: uppercase;
 				letter-spacing: .25em;
-				padding-bottom: 1em;
+				padding-bottom: .5em;
 				border-bottom: 1px solid #343434;
-			}
-			p {
-				color: #858585;
-				font-size: 0.938rem;
-				/* Approximation due to font substitution */
-				font-weight: 400;
-				line-height: 1.6;
-				/* Approximation due to font substitution */
-				text-align: center;
-			}
-			.fa {
-				margin: .2em;
-			}
-			.fa:hover {
-				color: #858585;
-			}
-		}
-	}
-	.boxB {
-		text-align: center;
-		
-		margin: 0 auto;
-		h4 {
-			text-transform: uppercase;
-			text-align: center;
-			margin-left: 3em;
-			letter-spacing: .25em;
-			border-bottom: 1px solid #343434;
-			padding-bottom: 1em;
-		}
-		li {
-			a {
-				color: #858585;
-				font-size: .75em;
-				text-align: center;
-			}
-		}
-	}
-	.boxC {
-		text-align: center;
-		
-		h4 {
-			text-transform: uppercase;
-			letter-spacing: .25em;
-			border-bottom: 1px solid #343434;
-			padding-bottom: 1em;
-			
-		}
-		button {
-			background: #D9DC5F;
-			border: none;
-			padding: .25em;
-			margin-top: 1em;
-			width: 50%;
-		}
-		li {
-			color: #858585;
-			font-size: .75em;
-		}
-		input {
-			width: 100%;
-		}
-	}
-}
-.headerTwo{
-	border-top:1px solid #E8E8E8;
-	}
-.aboutHeader {
-	background: url('/assets/plants_wide.jpeg'), linear-gradient(rgba(42, 56, 33, .025), rgba(129, 160, 93, 0.8));
-	background-blend-mode: overlay;
-	background-size: cover;
-	height: 30vh;
-	h1 {
-		color: white;
-		font-size: 2.225rem;
-		transform: scaleX(1.001);
-		text-transform: uppercase;
-		letter-spacing: .1em;
-		font-weight: 400;
-		text-align: center;
-		padding-top: 1em;
-	}
-}
-.navAbout {
-	border-bottom:1px solid #E8E8E8;
-		.container {
-			width:75%;
-			padding-left:2em;
-			text-transform: lowercase;
-				li {
-					display: inline-flex;
-					flex-direction: row;
-					color: #696969;
-					font-size: 0.866rem;
-					font-weight: 400;
-					line-height: 10.469;	
-					text-align: left;
-					transform: scaleX(1.015);
+				@include mq($max-width: 320px) {
+					font-size: .2em;
+					text-align: center;
 				}
-					.fa {
-						font-size: .2rem;
-						padding: .6em;
+				@include mq($min-width: 320px, $max-width: 480px) {
+					border-bottom: none;
+					text-align: center;
+				}
+			}
+			ul {
+				margin: 0 auto;
+				text-align: center;
+				margin-right: 2.2em;
+				@include mq($max-width: 320px) {
+					margin: 0;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					justify-content: space-between;
+				}
+				@include mq($min-width: 320px, $max-width: 480px) {
+					margin: 0 auto;
+					text-align: center;
+					padding: 0;
+					display: inline-flex;
+					justify-content: center;
+					flex-direction: column;
+					flex-wrap: no-wrap;
+				}
+				@include mq($min-width: 768px, $max-width: 1024px) {
+					display: inline-flex;
+					flex-direction: column;
+					padding: 0;
+					margin: 0 auto;
+				}
+				li {
+					color: #868686;
+					font-size: 0.938rem;
+					/* Approximation due to font substitution */
+					font-weight: 400;
+					line-height: 2.2;
+					/* Approximation due to font substitution */
+					text-align: center;
+					@include mq($max-width: 320px) {
+						font-size: .2em;
+						margin: .425em;
 					}
+					@include mq($min-width: 320px, $max-width: 480px) {
+						text-align: center;
+						font-size: .8em;
+						display: flex;
+						justify-content: center;
+					}
+					@include mq($min-width: 768px, $max-width: 1024px) {
+						text-align: left;
+					}
+					a {
+						color: #858585;
+						font-size: 0.938rem;
+						@include mq($max-width: 320px) {
+							font-size: .4em;
+						}
+						@include mq($min-width: 320px, $max-width: 480px) {
+							font-size: 1.2em;
+						}
+						@include mq($min-width: 768px, $max-width: 1024px) {
+							font-size: .5em;
+							margin: 0 auto;
+						}
+					}
+				}
+			}
+		}
+		.boxC {
+			h4 {
+				text-transform: uppercase;
+				letter-spacing: .25em;
+				padding-bottom: .5em;
+				border-bottom: 1px solid #343434;
+				@include mq($max-width: 320px) {
+					font-size: .2em;
+					margin: .225em;
+				}
+				@include mq($min-width: 320px, $max-width: 480px) {
+					font-size: .6em;
+					padding: 1em;
+					border-bottom: none;
+					;
+				}
+				@include mq($min-width: 768px, $max-width: 1024px) {
+					font-size: .8em;
+					text-align: center;
+				}
+			}
+			button {
+				background: #D9DC5F;
+				border: none;
+				padding: .45em;
+				margin-top: .5em;
+				width: 100%;
+			}
+			li {
+				color: #858585;
+				font-size: .65em;
+				text-align: center;
+				padding: .2em;
+				margin-right: 4em;
+				@include mq($max-width: 320px) {
+					font-size: .2em;
+				}
+				@include mq($min-width: 320px, $max-width: 480px) {
+					font-size: .6em;
+				}
+				@include mq($min-width: 768px, $max-width: 1024px) {
+					font-size: .5em;
+					padding: 0;
+				}
+			}
+			input {
+				display: block;
+				width: 100%;
+				margin-top: 1em;
+				padding: .25em;
+				outline: #252625;
+				@include mq($max-width: 320px) {
+					font-size: .2em;
+					margin: .225em;
+				}
+				@include mq($min-width: 768px, $max-width: 1024px) {}
+			}
+			input:focus {
+				color: #252625;
+			}
+		}
+	}
+}
+.headerTwo {}
+.navAbout {
+	border-bottom: 1px solid darken(#F9FAFB, 10%);
+	ul {
+		display: inline-flex;
+		flex-direction: row;
+		li {
+			text-transform: lowercase;
+			color: #696969;
+			font-size: 0.866rem;
+			font-weight: 400;
+			margin: .225em;
+		}
+		.fa {
+			font-size: .4rem;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				font-size: .8rem;
+			}
+		}
 	}
 }
 .aboutHero {
-	padding-top:20em;
+	height: 400px;
+	max-width: 61.04%;
+	margin: 0 auto;
+	position: relative;
 	background: url('/assets/girl_tree.jpeg');
 	background-position: center 100%;
 	background-repeat: no-repeat;
-	margin-top:3em;
-	height:100vh;
-	
+	margin-top: 2em;
+	@include mq($min-width: 320px, $max-width: 480px) {
+		background-size: cover;
+		padding: 0;
+		margin: 0 auto;
+		max-height: 200px;
+	}
 	.container {
-		margin:0 auto;
-		width:75%;
+		margin: 0 auto;
+		width: 61%!important;
 		text-align: center;
-			h2 {
-			padding:.1em;
-			padding-left:1.2em;
-			padding-right:1.2em;
-			color: #80a05d;
-			font-size: 1.35em;
-			font-weight: 200;
-			letter-spacing:.0725em;
-			line-height: 1.605;
-			text-decoration: underline;
-			text-align: left;
-		}
-				.heroBox {
-					background: white;
-					display:inline-flex;
-					padding:.225em;
-					max-width:59.25%;
-					margin-left:-12em;
-					margin-top:5em;
+		.heroBox {
+			background: white;
+			display: flex;
+			padding: .225em;
+			max-width: 68%;
+			padding: 1em;
+			position: absolute;
+			bottom: 2%;
+			left: 4%;
+			margin-top: 2em;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				position: absolute;
+				margin: 0;
+				right: 0;
+				left: 0;
+				bottom: -15%;
+				opacity: .8;
 			}
+			h2 {
+				padding: .1em;
+				padding-left: 1.2em;
+				padding-right: 1.2em;
+				color: #80a05d;
+				font-size: 1.0005em!important;
+				font-weight: 200;
+				letter-spacing: .0725em;
+				line-height: 1.605;
+				text-decoration: underline;
+				text-align: left;
+			}
+			@include mq($min-width: 320px, $max-width: 480px) {
+				font-size: .88em;
+				max-width: 100%;
+				line-height: .9;
+				font-weight: 400;
+				padding: 0;
+				margin: 0 auto;
+			}
+		}
 	}
 }
-
 .aboutServices {
-	border-top:1px solid #EBEBEB;
-	border:1px solid black;
-
+	border-top: 1px solid #EBEBEB;
+	@include mq($min-width: 320px, $max-width: 480px) {
+		margin: 0 auto;
+	}
 	.container {
-		width:75%;
-		margin:0 auto;
-		display:flex;
-		flex-direction:row;
-		justify-content:space-around;
-		height:70vh;
-		
-			ul {
-				padding:2em;
-				margin-top:4em;
+		max-width: 60%!important;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin: 0 auto;
+		}
+		ul {
+			margin: 0 auto;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				margin: 0 auto;
+				text-align: center;
+				padding: 2em;
+			}
+			img {
+				padding-top: .225em;
+			}
+			li {
+				padding: .1em;
+				margin: 0 auto;
+				text-align: center;
+				@include mq($min-width: 320px, $max-width: 480px) {}
 			}
 		}
-	.firstChild {
-		text-transform:uppercase;
-color:#819F60;
-
-
-font-size: 1.025rem;/* Approximation due to font substitution */
-font-weight: 500;
-width:10rem;
-letter-spacing:.1em;
-color:  #80a05d;
-font-size: 1.125rem;/* Approximation due to font substitution */
-font-weight: 500;
 	}
-
-		p {
-		color: #949494;
-		font-size: 0.875rem;/* Approximation due to font substitution */
-		font-weight: 400;
-		line-height: 1.286;/* Approximation due to font substitution */
-		text-align: center;
+	.firstChild {
+		text-transform: uppercase;
+		color: #819F60;
+		font-size: .7025rem;
+		font-weight: 200;
+		width: 10rem;
+		letter-spacing: .1em;
+		color: #80a05d;
+		font-size: 1.125rem;
+		font-weight: 500;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			font-size: .8em;
+			margin: 0 auto;
 		}
-
+	}
+	p {
+		color: #949494;
+		font-size: 0.875rem;
+		/* Approximation due to font substitution */
+		font-weight: 400;
+		line-height: 1.286;
+		/* Approximation due to font substitution */
+		text-align: center;
+		padding-top: 1em;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			font-size: .8em;
+			margin: 0 auto;
+			text-align: center;
+			padding: .2em;
+		}
+	}
 	.option1, .option2, .option3, .option4 {
-	text-align:center;
-	margin:0 auto;
-	background:#F5F5F5;
-	background-size:contain;
-	background-repeat:no-repeat;
-
-
-
+		text-align: center;
+		margin: 0 auto;
+		background: #F5F5F5;
+		background-size: contain;
+		background-repeat: no-repeat;
+		position: relative;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			padding: 1em;
+		}
 	}
 	.option1:hover, .option2:hover, .option3:hover, .option4:hover {
-background: url('/assets/hover_image.jpeg') ;
-		background-size:cover;
-		background-repeat:no-repeat;
-		background-position:center;
+		background: url('/assets/hover_image.jpeg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	.option1:hover:after, .option2:hover:after, .option3:hover:after, .option4:hover:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(230, 242, 97, 0.84);
+		max-width: 290px;
+		height: 416px;
 	}
 	.option1 {
-		background:url('/assets/bg_logo_left.png');
-		background-size:cover;
-		background-repeat:no-repeat;
-	
-		}
-
-	
-		
-
+		background: url('/assets/bg_logo_left.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 	.option4 {
-	background:url('/assets/bg_logo_right.jpg');
-	background-size:cover;
-	background-repeat:no-repeat;
-	flex:auto;
-		
-	}
-	
-}
-
-.testimonial {
-	margin:0 auto;
-	padding:0;
-	height:60vh;
-	background:url("/assets/flower_pots.jpeg");
-	background-position:  85% 90%;
-	background-size:cover;
-	width:100%;
-	background-repeat:no-repeat;
-	position:relative;
-	background-attachment: fixed;
-
-
-.containertwo {
-	padding:4em;
-
-	}
-}
-
-
-.text-wrap{
-	width:100%;
-	padding:3em;
-	margin:0 auto;
-	text-align:center;
-
-		h4 {
-		font-family: Poppins;
-		color:  #ffffff;
-		margin:0 auto;
-		font-style:italic;
-		padding-top:1em;
-		font-size: 1.6rem;/* Approximation due to font substitution */
-		font-weight:100;
-		width:60%;
-		text-align: center;
+		background: url('/assets/bg_logo_right.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		flex: auto;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			background-size: 100% 100%;
 		}
-
+	}
+}
+.testimonial {
+	margin: 0 auto;
+	padding: 0;
+	max-height: 465px;
+	background: url("/assets/flower_pots.jpeg");
+	background-position: 85% 90%;
+	background-size: cover;
+	width: 100%;
+	background-repeat: no-repeat;
+	position: relative;
+	background-attachment: fixed;
+	@include mq($min-width: 320px, $max-width: 480px) {
+		height: 300px;
+		width: 100%;
+		background-position: center;
+		background-size: auto auto;
+	}
+	@include mq($min-width: 768px, $max-width: 1024px) {
+		max-height: 300px;
+	}
+	.containertwo {
+		padding: 4em;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			padding: .5em;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			padding: .25em;
+		}
+	}
+}
+.text-wrap {
+	width: 100%;
+	padding: 3em;
+	margin: 0 auto;
+	text-align: center;
+	h4 {
+		color: #ffffff;
+		margin: 0 auto;
+		font-style: italic;
+		padding-top: 1em;
+		font-size: 1.6rem;
+		/* Approximation due to font substitution */
+		font-weight: 100;
+		width: 60%;
+		text-align: center;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			color: #ffff;
+			padding: 0;
+			min-width: 100%;
+			font-size: 1em;
+			font-weight: 100;
+			margin: 0 auto;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			padding: 0;
+			width: 100%;
+			font-size: 1.5em;
+		}
+	}
 	.name {
 		background-color: #1C1C1C;
-		width:20%;
-		text-align:center;
-		color:white;
-		padding:.125em;
-		margin:0 auto;
+		width: 20%;
+		text-align: center;
+		color: white;
+		padding: .125em;
+		margin: 0 auto;
 		font-family: Poppins;
-		color:  #ffffff;
-		font-size: 1.25rem;/* Approximation due to font substitution */
+		color: #ffffff;
+		font-size: 1.25rem;
+		/* Approximation due to font substitution */
 		font-weight: 600;
-		margin-top:1em;
+		margin-top: 1em;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			max-width: 100%;
+			padding: .2em;
+			width: 100%;
+			font-size: .8em;
+			font-weight: 600;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			width: 50%;
+			padding: .2em;
+		}
 	}
-
 	.location {
 		font-family: Poppins;
-		color:  #ffffff;
-		font-size: 0.875rem;/* Approximation due to font substitution */
+		color: #ffffff;
+		font-size: 0.875rem;
+		/* Approximation due to font substitution */
 		font-weight: 300;
-		margin:0 auto;
+		margin: 0 auto;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			color: #ffff;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
 	}
 }
-
-.testimonial:before{
+.testimonial:after {
 	content: ' ';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-	background-color:  rgba(166, 163, 163, 0.38);
-
-
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(166, 163, 163, 0.38);
 }
-.containerMain{
-	max-width:1120px;
-	margin:0 auto;
+.containerMain {
+	max-width: 1120px;
+	margin: 0 auto;
+}
+.contactUs {
+	position: relative;
+	padding: 1em;
+	@include mq($min-width: 1280px, $max-width: 1680px) {
+		padding-top: 3em;
+	}
+	.container {
+		width: 61%!important;
+		margin: 0 auto;
+		text-align: center;
+		background: url('/assets/garden-way.jpg');
+		background-size: contain;
+		background-repeat: no-repeat;
+		height: 580px;
+		width: 1170px;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			background-size: 100% auto;
+			height: 500px;
+			min-width: 100%;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			background-size: auto 50%;
+		}
+		@include mq($min-width: 1280px, $max-width: 1680px) {
+			max-width: 35%!important;
+			margin: 0 auto;
+		}
+	}
+	.contactBox {
+		background: white;
+		border: 1px solid transparent;
+		display: flex;
+		flex-direction: row;
+		flex-flow: wrap row;
+		justify-content: center;
+		position: absolute;
+		top: 75%;
+		left: 26.8%;
+		width: 45%;
+		background: white;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			top: 50%;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			top: 50%;
+			left: 24%;
+		}
+		@include mq($min-width: 1280px, $max-width: 1680px) {
+			left: 37.2%;
+			padding: 0;
+			top: 55%;
+			width: 25%;
+		}
+		ul {
+			z-index: 9999;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			background: white;
+			margin: 0 auto;
+			padding: .225em;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				flex-direction: column;
+				margin: 0 auto;
+				display: inline-block;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				flex-direction: column;
+				margin: 0 auto;
+			}
+			li {
+				color: #3e3e3e;
+				font-size: 0.513rem;
+				/* Approximation due to font substitution */
+				font-weight: 600;
+				line-height: 1.2;
+				/* Approximation due to font substitution */
+				text-align: center;
+				padding: 3.1em;
+				@include mq($min-width: 320px, $max-width: 480px) {
+					padding: 0;
+					font-size: .6rem;
+				}
+				img {
+					max-width: 50px;
+					max-height: 40px;
+					margin-bottom: 1.50em;
+					@include mq($min-width: 320px, $max-width: 480px) {
+						margin: 0;
+						width: 30px;
+						height: 30px;
+						padding: .5em;
+					}
+				}
+			}
+			li:nth-child(2) {
+				border-left: 1px solid #E4E4E4;
+				border-right: 1px solid #E4E4E4;
+				@include mq($min-width: 320px, $max-width: 480px) {
+					border-top: 1px solid #E4E4E4;
+					border-left: none;
+					border-bottom: 1px solid #E4E4E4;
+					border-right: none;
+					padding: 1em;
+				}
+				@include mq($min-width: 768px, $max-width: 1024px) {
+					border-top: 1px solid #E4E4E4;
+					border-left: none;
+					border-bottom: 1px solid #E4E4E4;
+					border-right: none;
+					padding: 1em;
+				}
+			}
+		}
+	}
+}
+.contactMap {
+	padding-bottom: 3.5em;
+	@include mq($min-width: 320px, $max-width: 480px) {
+		padding: 0;
+	}
+	@include mq($min-width: 768px, $max-width: 1024px) {
+		padding-top: 6em;
+	}
+	@include mq($min-width: 1280px, $max-width: 1680px) {
+		padding-top: .2em;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.container {
+		margin: 0 auto;
+		text-align: center;
+		max-width: 60%!important;
+		display: flex;
+		flex-direction: row;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			max-width: 100%!important;
+			flex-direction: column;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			max-width: 100%!important;
+			flex-direction: column;
+		}
+		@include mq($min-width: 1280px, $max-width: 1680px) {
+			margin: 0 auto;
+			max-width: 50%!important;
+			flex-direction: column;
+		}
+		.map {
+			width: 60%;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				width: 80%;
+				margin: 0 auto;
+			}
+			@include mq($min-width: 768px, $max-width: 1024px) {
+				max-width: auto;
+				margin: 0 auto;
+			}
+			@include mq($min-width: 1280px, $max-width: 1680px) {
+				width: 70%;
+				max-width: auto;
+				margin: 0 auto;
+			}
+			img {
+				height: 405px;
+				width: 100%;
+				display: block;
+				@include mq($min-width: 320px, $max-width: 480px) {
+					height: auto;
+				}
+			}
+		}
+		.formContact {
+			max-width: 60%;
+			margin: 0 auto;
+			@include mq($min-width: 320px, $max-width: 480px) {
+				max-width: 80%;
+				padding: 2em;
+			}
+			@include mq($min-width: 1280px, $max-width: 1680px) {
+				margin: 0 auto;
+				padding-top: 3em;
+				max-width: 70%;
+				text-align: center;
+			}
+			p {
+				color: #878787;
+				font-size: 0.637rem;
+				/* Approximation due to font substitution */
+				font-weight: 400;
+				line-height: 1.801;
+				/* Approximation due to font substitution */
+				text-align: center;
+			}
+			button {
+				background-color: #80a05d;
+				width: 176px;
+				height: 49px;
+				border: none;
+				color: white;
+				text-transform: Uppercase;
+				font-size: 0.812rem;
+				/* Approximation due to font substitution */
+				font-weight: 600;
+				line-height: 1.201;
+				/* Approximation due to font substitution */
+				text-align: center;
+				@include mq($min-width: 320px, $max-width: 480px) {
+					padding: 0;
+					width: 100%;
+					margin: 0 auto;
+				}
+			}
+			h3 {
+				font-size: 1.25em;
+				text-transform: uppercase;
+				line-height: .225em;
+			}
+			input {
+				border: none;
+				background-color: #f5f5f5;
+				background-color: #f5f5f5;
+				width: 100%;
+			}
+			input.message {
+				background-color: #f5f5f5;
+				width: 100%;
+				height: 98px;
+				margin: .225em;
+				border: none;
+			}
+			.inputInfo {
+				text-transform: uppercase;
+				color: #202020;
+				font-size: 0.812rem;
+				font-weight: 600;
+				line-height: 1.114;
+				/* Approximation due to font substitution */
+				text-align: center;
+				transform: scaleX(1.0009);
+				/* width and height properties ommitted due to transform */
+			}
+		}
+	}
+}
+.contactHeader {
+	z-index: 10;
+	h1 {
+		color: #ffffff;
+		font-size: 2.555rem;
+		/* Approximation due to font substitution */
+		font-weight: 100;
+		text-align: center;
+		transform: scaleX(1.001);
+		/* width and height properties ommitted due to transform */
+		padding: 1.5em;
+		text-transform: uppercase;
+		color: white;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			font-size: 1.5rem;
+		}
+		@include mq($min-width: 768px, $max-width: 1024px) {
+			font-size: 1.4rem;
+			margin: 0 auto;
+		}
+	}
+	background:url('/assets/plants_wide.jpeg');
+	background-size: cover;
+	position:relative;
+}
+.contactHeader:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(129, 160, 93, 0.8);
+}
+.wrapperContact {
+	max-height: 100vh;
+}
+.containerHead {
+	width: 60%!important;
+	margin: 0 auto;
+}
+.instagramNav {
+	position: relative;
+	@include mq($min-width: 320px, $max-width: 480px) {
+		max-width: 100%;
+		display: flex;
+	}
+	.followBox {
+		background-color: #252525;
+		max-width: 219px;
+		min-height: 26px;
+		text-transform: uppercase;
+		position: absolute;
+		top: 0;
+		left: 14%;
+		opacity: .8999;
+		padding: .221em;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: none;
+		}
+		h5 {
+			color: #dddddd;
+			font-size: 0.775rem;
+			/* Approximation due to font substitution */
+			font-weight: 100;
+			text-align: center;
+			padding: .155em;
+			margin: 1em;
+		}
+	}
+	.followLink {
+		background-color: #d9de55;
+		width: 145px;
+		max-height: 18%;
+		position: absolute;
+		bottom: 0;
+		margin: 0 auto;
+		text-align: center;
+		right: 14%;
+		opacity: .9;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			display: none
+		}
+		h5 {
+			color: #252525;
+			font-size: 0.875rem;
+			/* Approximation due to font substitution */
+			font-weight: 400;
+			line-height: .3;
+			/* Approximation due to font substitution */
+			text-align: center;
+		}
+	}
+	margin:0;
+	padding:0;
+	ul {
+		min-width: 100%;
+		padding: 0;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: no-wrap;
+		justify-content: space-around;
+		@include mq($min-width: 320px, $max-width: 480px) {
+			justify-content: space-between;
+		}
+		li {
+			padding: 0;
+			img {
+				display: block;
+				@include mq($min-width: 320px, $max-width: 480px) {
+					width: 100%;
+				}
+			}
+		}
+	}
 }
